@@ -65,7 +65,8 @@ reporting_task:
     A detailed markdown report with proper headings and subheadings covering all four topic areas.
     Each section should be 2-4 paragraphs with technical accuracy, clear explanations, and
     Harvard-cited sources. Formatted as markdown without code fences.
+  agent: reporting_analyst
   context:
     - analyze_research
   output_file: output/report.md
-  agent: reporting_analyst
+
