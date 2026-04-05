@@ -1,3 +1,5 @@
+# Hierarchical process:
+
 ```mermaid
 flowchart TD
     A["User input<br/>Topic: fundamental computer networking concepts in relation to cloud computing"] --> M["Manager agent<br/>Role: coordinate research and analysis of topic"]
@@ -14,3 +16,6 @@ flowchart TD
     D --> F["Saved outputs"]
     E --> F
 ```
+
+
+In a hierarchical workflow, a manager agent oversees coordination across the crew. In my example, the task dependencies still create a fairly structured flow, but using a manager changes the orchestration model and pushes the design closer to coordinated delegation than a simple pipeline.

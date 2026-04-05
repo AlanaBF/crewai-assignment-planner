@@ -1,11 +1,16 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from crewai.agents.agent_builder.base_agent import BaseAgent
 from crewai_tools import SerperDevTool
+from .models import (
+    ResearchFindingsOutput,
+    AnalysisOutput,
+    AssignmentGuidanceOutput,
+)
+
 
 @CrewBase
-class AssignmentPlannerBaseline0():
-    """AssignmentPlannerBaseline0 crew"""
+class AssignmentPlannerBaseline1():
+    """AssignmentPlannerBaseline1 crew"""
 
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
@@ -14,7 +19,8 @@ class AssignmentPlannerBaseline0():
     def degree_researcher(self) -> Agent:
         return Agent(
             config=self.agents_config['degree_researcher'],
-            verbose=True, tools=[SerperDevTool()]
+            verbose=True, 
+            tools=[SerperDevTool()]
         )
 
     @agent
@@ -35,12 +41,14 @@ class AssignmentPlannerBaseline0():
     def find_relevant_research(self) -> Task:
         return Task(
             config=self.tasks_config['find_relevant_research'],
+            output_pydantic=ResearchFindingsOutput,
         )
 
     @task
     def analyze_research(self) -> Task:
         return Task(
             config=self.tasks_config['analyze_research'],
+            output_pydantic=AnalysisOutput,
             output_file='output/analysis.md'
         )
 
@@ -48,6 +56,7 @@ class AssignmentPlannerBaseline0():
     def assignment_guidance(self) -> Task:
         return Task(
             config=self.tasks_config['assignment_guidance'],
+            output_pydantic=AssignmentGuidanceOutput,
             output_file='output/assignment_guidance.md'
         )
 
@@ -60,7 +69,7 @@ class AssignmentPlannerBaseline0():
 
     @crew
     def crew(self) -> Crew:
-        """Creates the AssignmentPlannerBaseline0 crew"""
+        """Creates the AssignmentPlannerBaseline1 crew"""
         manager = Agent(
             config=self.agents_config['manager'],
             allow_delegation=True

@@ -1,0 +1,24 @@
+[project]
+name = "assignment_planner_baseline_1"
+version = "0.1.0"
+description = "assignment_planner_baseline_1 using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.11.0"
+]
+
+[project.scripts]
+assignment_planner_baseline_1 = "assignment_planner_baseline_1.main:run"
+run_crew = "assignment_planner_baseline_1.main:run"
+train = "assignment_planner_baseline_1.main:train"
+replay = "assignment_planner_baseline_1.main:replay"
+test = "assignment_planner_baseline_1.main:test"
+run_with_trigger = "assignment_planner_baseline_1.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
