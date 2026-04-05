@@ -1,0 +1,17 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Mac
+.DS_Store
+
+# Outputs (we don't want to commit all generated files)
+output/
+results/
+
+# VS Code
+.vscode/
