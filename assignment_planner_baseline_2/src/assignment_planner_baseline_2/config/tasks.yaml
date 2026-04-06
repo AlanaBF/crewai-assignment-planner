@@ -1,0 +1,96 @@
+find_relevant_research:
+  description: >
+    Research fundamental computer networking concepts as they relate to cloud computing.
+    You must find sources that cover ALL of the following areas:
+    1. Network structure and topology (LAN, WAN, mesh, star, etc.)
+    2. Cloud architecture and service models (IaaS, PaaS, SaaS) with real examples
+    3. Core networking components: routers, switches, firewalls, load balancers, DNS, and key protocols (TCP/IP, HTTP/S, UDP)
+    4. Quality of Service (QoS) in cloud environments: latency, bandwidth, packet loss, jitter, SLAs
+    Prioritise high-quality sources in this order:
+    1. Peer-reviewed academic papers
+    2. University materials
+    3. Official cloud provider documentation
+    4. Standards or recognised technical documentation
+    Avoid weak or generic sources unless absolutely necessary.
+    Do not use low-quality summary sites when a stronger source is available.
+    Use Harvard referencing for all citations.
+    Use these topic_area labels consistently:
+    - Network Structure and Topology
+    - Cloud Architecture and Service Models
+    - Core Networking Components and Protocols
+    - Quality of Service
+  expected_output: >
+    A structured set of research findings containing between 8 and 12 findings in total:
+    - a list of findings
+    - for each finding: title, summary, citation, topic_area, and source_url
+    - an overall summary of the research findings and their relevance to the assignment
+    Return only the fields required by the expected structured output.
+    Do not add extra headings, markdown formatting, commentary, or introductory text.
+  agent: degree_researcher
+
+analyze_research:
+  description: >
+    Using the research provided, produce a clear structured analysis covering each of the four
+    key areas: network structure, cloud architecture (IaaS/PaaS/SaaS), networking components
+    and protocols, and QoS.
+    You must produce exactly four sections, one for each of these topic areas:
+    - Network Structure and Topology
+    - Cloud Architecture and Service Models
+    - Core Networking Components and Protocols
+    - Quality of Service
+    For each area:
+    - Define the concept precisely using correct technical terminology
+    - Explain how it relates to cloud computing specifically
+    - Highlight any important distinctions or common misconceptions
+  expected_output: >
+    A structured analysis containing:
+    - a list of sections
+    - for each section: topic_area, definition, cloud_relevance, key_points,
+      common_misconceptions, and citations
+    - an overall summary explaining how the concepts relate to cloud computing
+    Return only the fields required by the expected structured output.
+    Do not add extra headings, markdown formatting, commentary, or introductory text.
+  agent: reporting_analyst
+  context:
+    - find_relevant_research
+
+assignment_guidance:
+  description: >
+    You are advising a university student on how to use this research in their assignment.
+    The assignment question is: "Explain fundamental computer networking concepts in relation
+    to cloud computing (e.g., structure, cloud architecture, components, quality of service)."
+    Review the analysed concepts and produce specific, practical guidance for the student.
+    The suggested outline should be logically ordered and specific enough that a student could directly use it to plan the assignment.
+    Avoid vague or generic study advice.
+    - Suggest a logical structure/outline for their assignment
+    - For each section, explain what to write and what key points to make
+    - Flag any concepts that need extra care (common mistakes, things examiners look for)
+    - Recommend where to use diagrams or examples
+    - Suggest 2-3 additional search terms or topics they could explore to strengthen the work
+  expected_output: >
+    A structured assignment guide containing:
+    - a suggested outline
+    - for each outline section: section_heading, what_to_cover, why_it_matters,
+      common_mistakes, and example_suggestions
+    - a watch_out_for list
+    - a further_reading list
+    Return only the fields required by the expected structured output.
+    Do not add extra headings, markdown formatting, commentary, or introductory text.
+  agent: senior_advanced_software_engineer_teacher
+  context:
+    - analyze_research
+
+reporting_task:
+  description: >
+    Using the analysis of networking and cloud computing concepts, write a full reference report
+    that the student can use as a resource while writing their assignment.
+    Cover all four areas in depth: network structure, cloud architecture, components/protocols,
+    and QoS. The report should read like a well-structured academic resource, not a list.
+  expected_output: >
+    A detailed markdown report with proper headings and subheadings covering all four topic areas.
+    Each section should be 2-4 paragraphs with technical accuracy, clear explanations, and
+    Harvard-cited sources. Formatted as markdown without code fences.
+  agent: reporting_analyst
+  context:
+    - analyze_research
+
